@@ -1,5 +1,5 @@
-# Stage 1: Build the application using Eclipse Temurin
-FROM eclipse-temurin:17-jdk AS build
+# Stage 1: Build the application using Eclipse Temurin Java 21
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 COPY . .
 
@@ -7,8 +7,8 @@ COPY . .
 RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Run the application using a lightweight production runtime
-FROM eclipse-temurin:17-jdk
+# Stage 2: Run the application using Java 21 production runtime
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
