@@ -16,7 +16,8 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Applies to ALL endpoints (/api/auth, /api/expenses, etc.)
-                        .allowedOrigins("http://localhost:5173") // Your React Dev Server
+                        .allowedOrigins("http://localhost:5173",
+                                       "https://fin-track-pro-frontend.vercel.app") // Your React Dev Server
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
